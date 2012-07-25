@@ -15,13 +15,17 @@ SOURCE ID: 2010-07-02 19:04:59 336ce7d29767f76c4a92aa4bbc46d21e19871667
 *** COMPILATION:
 
 No Makefile is provided. Compilation (in debug mode) is as easy as:
-$ gcc -o sqlite3 -ldl -lpthread -I. -DSQLITE_HAS_CODEC -Wall -ggdb shell.c sqlite3.c
+$ gcc -o sqlite3 -I. -DSQLITE_HAS_CODEC shell.c sqlite3.c -Wall -ggdb -ldl -lpthread
 
 Tested & supported platforms are:
 * Linux (Ubuntu 10.04 x86)
 * Windows (Cygwin)
 * Mac OS X (10.7)
 
+WARNING: on recent Ubuntu versions, GCC command-line arguments ordering matters.
+
+"The --as-needed option also makes the linker sensitive to the ordering of libraries on the command-line."
+https://wiki.ubuntu.com/NattyNarwhal/ToolchainTransition#How_to_Fix_a_Problem
 
 *** USAGE:
 
@@ -29,13 +33,12 @@ Tested & supported platforms are:
 
 Note: key length is only limited by 'int' implementation size.
 
-
 *** KNOWN LIMITATIONS:
 
-Encryption key put into ~/.sqliterc file will NOT be taken into account.
+* Encryption key put into ~/.sqliterc file will NOT be taken into account.
 
-".backup" and ".restore" meta commands will NOT encrypt the /other/ database (would be easy to implement anyway).
+* ".backup" and ".restore" meta commands will NOT encrypt the /other/ database (would be easy to implement anyway).
 
-Rekeying is supported by the API, but not implemented (yet).
+* Rekeying is supported by the API, but not implemented (yet).
 
 *** EOT
