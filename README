@@ -15,7 +15,7 @@ SOURCE ID: 2010-07-02 19:04:59 336ce7d29767f76c4a92aa4bbc46d21e19871667
 *** COMPILATION:
 
 No Makefile is provided. Compilation (in debug mode) is as easy as:
-$ gcc -o sqlite3 -I. -DSQLITE_HAS_CODEC shell.c sqlite3.c -Wall -ggdb -ldl -lpthread
+$ gcc -o sqlite3 -I. -DSQLITE_HAS_CODEC -DHAVE_READLINE shell.c sqlite3.c -Wall -ggdb -ldl -lpthread -lreadline -lncurses
 
 Tested & supported platforms are:
 * Linux (Ubuntu 10.04 x86)
